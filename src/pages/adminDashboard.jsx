@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Layout from '@/Layout'
+import Layout from '@/pages/Layout'
 import axios from 'axios'
 import useSWR from 'swr'
 
@@ -20,38 +20,38 @@ const adminDashboard = () => {
 
 
     const data = [
-        { id: 1, name: 'John Doe', age: 30 },
-        { id: 2, name: 'Jane Smith', age: 25 },
-        { id: 3, name: 'Bob Johnson', age: 35 },
-        { id: 3, name: 'Bob Johnson', age: 35 },
-        { id: 3, name: 'Bob Johnson', age: 35 },
-        { id: 3, name: 'Bob Johnson', age: 35 },
-        { id: 3, name: 'Bob Johnson', age: 35 },
-        { id: 3, name: 'Bob Johnson', age: 35 },
-        { id: 3, name: 'Bob Johnson', age: 35 },
-        { id: 3, name: 'Bob Johnson', age: 35 },
-        { id: 3, name: 'Bob Johnson', age: 35 },
-        { id: 3, name: 'Bob Johnson', age: 35 },
-        { id: 3, name: 'Bob Johnson', age: 35 },
-        { id: 3, name: 'Bob Johnson', age: 35 },
-        { id: 3, name: 'Bob Johnson', age: 35 },
-        { id: 3, name: 'Bob Johnson', age: 35 },
-        { id: 3, name: 'Bob Johnson', age: 35 },
-        { id: 3, name: 'Bob Johnson', age: 35 },
-        { id: 3, name: 'Bob Johnson', age: 35 },
-        { id: 3, name: 'Bob Johnson', age: 35 },
-        { id: 3, name: 'Bob Johnson', age: 35 },
-        { id: 3, name: 'Bob Johnson', age: 35 },
-        { id: 3, name: 'Bob Johnson', age: 35 },
-        { id: 3, name: 'Bob Johnson', age: 35 },
-        { id: 3, name: 'Bob Johnson', age: 35 },
-        { id: 3, name: 'Bob Johnson', age: 35 },
-        { id: 3, name: 'Bob Johnson', age: 35 },
+        { id: 1, iban: 'John Doe', age: 30 },
+        { id: 2, iban: 'Jane Smith', age: 25 },
+        { id: 3, iban: 'Bob Johnson', age: 35 },
+        { id: 3, iban: 'Bob Johnson', age: 35 },
+        { id: 3, iban: 'Bob Johnson', age: 35 },
+        { id: 3, iban: 'Bob Johnson', age: 35 },
+        { id: 3, iban: 'Bob Johnson', age: 35 },
+        { id: 3, iban: 'Bob Johnson', age: 35 },
+        { id: 3, iban: 'Bob Johnson', age: 35 },
+        { id: 3, iban: 'Bob Johnson', age: 35 },
+        { id: 3, iban: 'Bob Johnson', age: 35 },
+        { id: 3, iban: 'Bob Johnson', age: 35 },
+        { id: 3, iban: 'Bob Johnson', age: 35 },
+        { id: 3, iban: 'Bob Johnson', age: 35 },
+        { id: 3, iban: 'Bob Johnson', age: 35 },
+        { id: 3, iban: 'Bob Johnson', age: 35 },
+        { id: 3, iban: 'Bob Johnson', age: 35 },
+        { id: 3, iban: 'Bob Johnson', age: 35 },
+        { id: 3, iban: 'Bob Johnson', age: 35 },
+        { id: 3, iban: 'Bob Johnson', age: 35 },
+        { id: 3, iban: 'Bob Johnson', age: 35 },
+        { id: 3, iban: 'Bob Johnson', age: 35 },
+        { id: 3, iban: 'Bob Johnson', age: 35 },
+        { id: 3, iban: 'Bob Johnson', age: 35 },
+        { id: 3, iban: 'Bob Johnson', age: 35 },
+        { id: 3, iban: 'Bob Johnson', age: 35 },
+        { id: 3, iban: 'Bob Johnson', age: 35 },
       ];
 
       const columns = [
         { Header: 'ID', accessor: 'id' },
-        { Header: 'Name', accessor: 'name' },
+        { Header: 'IBAN', accessor: 'iban' },
         // Add more columns here
       ];
 
@@ -67,10 +67,8 @@ const adminDashboard = () => {
 
             <div className="py-12">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                    <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                        <div className="p-6 bg-white border-b border-gray-200 flex flex-col">
+                    <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg px-6 pt-6">
                             <Table data={data} columns={columns} />
-                        </div>
                     </div>
                 </div>
             </div>

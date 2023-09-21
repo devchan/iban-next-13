@@ -1,5 +1,5 @@
 'use client'
-import Layout from '@/Layout'
+import Layout from '@/pages/Layout'
 import Button from '@/components/Button'
 import axios from 'axios'
 import Head from 'next/head'
@@ -20,7 +20,7 @@ const Dashboard = () => {
         const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/iban-number-checker`
 
         if(ibnText !== '') {
-            
+
             await csrf()
             axios
                 .post(url, ibnText)
@@ -29,7 +29,7 @@ const Dashboard = () => {
                 })
                 .catch(error => {
                     if (error.response.status !== 422) throw error
-    
+
                     // setErrors(error.response.data.errors)
                 })
         } else {
@@ -59,7 +59,6 @@ const Dashboard = () => {
                                 {error ? 'Enter IBAN Number ' : ''}
                             </span>
 
-                            <Link href={'/adminDashboard'}>admin</Link>
                         </div>
 
                     </div>
