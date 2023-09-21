@@ -26,11 +26,11 @@ const Navigation = ({ user }) => {
                         {/* Logo */}
                         <div className="flex-shrink-0 flex items-center">
                             <Link href="/dashboard">
-                                <h4>IMBA</h4>
+                                <h4>IBAN</h4>
                             </Link>
                         </div>
 
-                       
+
                     </div>
 
                     {/* Settings Dropdown */}
@@ -99,7 +99,7 @@ const Navigation = ({ user }) => {
             {/* Responsive Navigation Menu */}
             {open && (
                 <div className="block sm:hidden">
-                    
+
 
                     {/* Responsive Settings Options */}
                     <div className="pt-4 pb-1 border-t border-gray-200">
