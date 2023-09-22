@@ -50,7 +50,7 @@ const Login = () => {
             <AuthCard
                 logo={
                     <Link href="/">
-                        <h2>IBAM</h2>
+                        <h2>IBAN</h2>
                     </Link>
                 }>
                 {/* Session Status */}
