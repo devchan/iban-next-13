@@ -1,34 +1,38 @@
+'use client'
 import { useTable, usePagination } from 'react-table'
-import Button from './Button'
+// import Button from './Button'
 import Pagination from './Pagination'
 
 const Table = ({ data, columns }) => {
-    const {
-        getTableProps,
-        getTableBodyProps,
-        headerGroups,
-        page,
-        gotoPage,
-        setPageSize,
-        state: { pageSize },
-        prepareRow,
-    } = useTable(
-        {
-            columns,
-            data,
-            initialState: { pageIndex: 0 }, // Set initial page index
-        },
-        usePagination,
-    )
+    // const {
+    //     getTableProps,
+    //     getTableBodyProps,
+    //     headerGroups,
+    //     page,
+    //     gotoPage,
+    //     setPageSize,
+    //     state: { pageSize },
+    //     prepareRow,
+    // } = useTable(
+    //     {
+    //         columns,
+    //         data,
+    //         initialState: { pageIndex: 0 }, // Set initial page index
+    //     },
+    //     usePagination,
+    // )
+
+
+    // console.log(data)
 
     return (
         <>
-            <div className="relative overflow-x-auto">
+            {/* <div className="relative overflow-x-auto">
                 <table
                     {...getTableProps()}
                     className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                     <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                        {headerGroups.map(headerGroup => (
+                        {headerGroups?.map(headerGroup => (
                             <tr {...headerGroup.getHeaderGroupProps()}>
                                 {headerGroup.headers.map(column => (
                                     <th
@@ -42,7 +46,7 @@ const Table = ({ data, columns }) => {
                         ))}
                     </thead>
                     <tbody {...getTableBodyProps()}>
-                        {page.map(row => {
+                        {page?.map(row => {
                             prepareRow(row)
                             return (
                                 <tr
@@ -69,7 +73,7 @@ const Table = ({ data, columns }) => {
                 length={data.length}
                 pageSize={pageSize}
                 setPageSize={setPageSize}
-            />
+            /> */}
         </>
     )
 }

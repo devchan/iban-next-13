@@ -1,59 +1,72 @@
 import Head from 'next/head'
 import Layout from '@/pages/Layout'
-import axios from 'axios'
-import useSWR from 'swr'
+import axios from '@/lib/axios'
+// import useSWR from 'swr'
 
 import Table from '@/components/Table'
+import { CONFIG_FILES } from 'next/dist/shared/lib/constants'
+import { useEffect, useState } from 'react'
 
 const adminDashboard = () => {
-    const fetchData = () => {
-        const URL = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/iban-numbers`
-        const { data: users, error, mutate } = useSWR(URL, () =>
-            axios
-                .get(URL)
-                .then(res => res)
-                .catch(error => {
-                    if (error.response.status !== 409) throw error
-                }),
-        )
+    const [ibanData, setIbanData] = useState([])
+
+
+
+    const fetchData = async () => {
+        const csrf = () => axios.get(`/sanctum/csrf-cookie`)
+        const url = `/api/iban-numbers`
+
+        await csrf()
+        axios
+            .get(url)
+            .then((data) => {
+                setIbanData(data)
+            })
+            .catch(error => {
+                if (error.response.status !== 422) throw error
+
+                // setErrors(error.response.data.errors)
+            })
+
+
     }
 
+    useEffect(() => {
+        fetchData();
+    }, [])
 
-    const data = [
-        { id: 1, iban: 'John Doe', age: 30 },
-        { id: 2, iban: 'Jane Smith', age: 25 },
-        { id: 3, iban: 'Bob Johnson', age: 35 },
-        { id: 3, iban: 'Bob Johnson', age: 35 },
-        { id: 3, iban: 'Bob Johnson', age: 35 },
-        { id: 3, iban: 'Bob Johnson', age: 35 },
-        { id: 3, iban: 'Bob Johnson', age: 35 },
-        { id: 3, iban: 'Bob Johnson', age: 35 },
-        { id: 3, iban: 'Bob Johnson', age: 35 },
-        { id: 3, iban: 'Bob Johnson', age: 35 },
-        { id: 3, iban: 'Bob Johnson', age: 35 },
-        { id: 3, iban: 'Bob Johnson', age: 35 },
-        { id: 3, iban: 'Bob Johnson', age: 35 },
-        { id: 3, iban: 'Bob Johnson', age: 35 },
-        { id: 3, iban: 'Bob Johnson', age: 35 },
-        { id: 3, iban: 'Bob Johnson', age: 35 },
-        { id: 3, iban: 'Bob Johnson', age: 35 },
-        { id: 3, iban: 'Bob Johnson', age: 35 },
-        { id: 3, iban: 'Bob Johnson', age: 35 },
-        { id: 3, iban: 'Bob Johnson', age: 35 },
-        { id: 3, iban: 'Bob Johnson', age: 35 },
-        { id: 3, iban: 'Bob Johnson', age: 35 },
-        { id: 3, iban: 'Bob Johnson', age: 35 },
-        { id: 3, iban: 'Bob Johnson', age: 35 },
-        { id: 3, iban: 'Bob Johnson', age: 35 },
-        { id: 3, iban: 'Bob Johnson', age: 35 },
-        { id: 3, iban: 'Bob Johnson', age: 35 },
-      ];
 
-      const columns = [
+
+
+    const data = ibanData.data
+
+
+
+
+
+
+    // const data = [
+    //     {
+    //         "id": 2,
+    //         "iban_number": "AD1400080001001234567890",
+    //         "created_at": "2023-09-22T04:48:12.000000Z",
+    //         "updated_at": "2023-09-22T04:48:12.000000Z"
+    //     },
+    //     {
+    //         "id": 1,
+    //         "iban_number": "AD1400080001001234567890",
+    //         "created_at": "2023-09-22T04:20:29.000000Z",
+    //         "updated_at": "2023-09-22T04:20:29.000000Z"
+    //     }
+    // ]
+
+
+
+    const columns = [
         { Header: 'ID', accessor: 'id' },
-        { Header: 'IBAN', accessor: 'iban' },
+        { Header: 'IBAN_NUMBER', accessor: 'iban_number' },
         // Add more columns here
-      ];
+    ];
 
 
 
@@ -68,7 +81,7 @@ const adminDashboard = () => {
             <div className="py-12">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg px-6 pt-6">
-                            <Table data={data} columns={columns} />
+                        <Table data={data} columns={columns} />
                     </div>
                 </div>
             </div>
