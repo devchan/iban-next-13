@@ -60,7 +60,7 @@ const Dashboard = () => {
                             <SuccessMessage message={successMessage} className="mt-2" />
                             <InputError messages={errors.iban_number} className="mt-2" />
 
-                            <Link href={'/adminDashboard'}>admin</Link>
+                           
                         </div>
 
                     </div>

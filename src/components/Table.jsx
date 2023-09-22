@@ -4,30 +4,30 @@ import { useTable, usePagination } from 'react-table'
 import Pagination from './Pagination'
 
 const Table = ({ data, columns }) => {
-    // const {
-    //     getTableProps,
-    //     getTableBodyProps,
-    //     headerGroups,
-    //     page,
-    //     gotoPage,
-    //     setPageSize,
-    //     state: { pageSize },
-    //     prepareRow,
-    // } = useTable(
-    //     {
-    //         columns,
-    //         data,
-    //         initialState: { pageIndex: 0 }, // Set initial page index
-    //     },
-    //     usePagination,
-    // )
+    const {
+        getTableProps,
+        getTableBodyProps,
+        headerGroups,
+        page,
+        gotoPage,
+        setPageSize,
+        state: { pageSize },
+        prepareRow,
+    } = useTable(
+        {
+            columns,
+            data,
+            initialState: { pageIndex: 0 }, // Set initial page index
+        },
+        usePagination,
+    )
 
 
     // console.log(data)
 
     return (
         <>
-            {/* <div className="relative overflow-x-auto">
+            <div className="relative overflow-x-auto">
                 <table
                     {...getTableProps()}
                     className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -73,7 +73,7 @@ const Table = ({ data, columns }) => {
                 length={data.length}
                 pageSize={pageSize}
                 setPageSize={setPageSize}
-            /> */}
+            />
         </>
     )
 }

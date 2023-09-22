@@ -4,7 +4,6 @@ import axios from '@/lib/axios'
 // import useSWR from 'swr'
 
 import Table from '@/components/Table'
-import { CONFIG_FILES } from 'next/dist/shared/lib/constants'
 import { useEffect, useState } from 'react'
 
 const adminDashboard = () => {
@@ -20,7 +19,8 @@ const adminDashboard = () => {
         axios
             .get(url)
             .then((data) => {
-                setIbanData(data)
+
+                setIbanData(data.data.data)
             })
             .catch(error => {
                 if (error.response.status !== 422) throw error
@@ -38,12 +38,7 @@ const adminDashboard = () => {
 
 
 
-    const data = ibanData.data
-
-
-
-
-
+    const data = ibanData
 
     // const data = [
     //     {
